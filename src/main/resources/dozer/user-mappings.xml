@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<mapping>
+		<class-a>com.k15t.pat.entity.UserEntity</class-a>
+		<class-b>com.k15t.pat.dto.UserInDTO</class-b>
+
+		<field>
+			<a>name</a>
+			<b>name</b>
+		</field>
+
+		<field>
+			<a>email</a>
+			<b>email</b>
+		</field>
+
+		<field>
+			<a>password</a>
+			<b>password</b>
+		</field>
+
+		<field>
+			<a>phone</a>
+			<b>phone</b>
+		</field>
+
+		<field>
+			<a>addressEntities</a>
+			<b>addressInDTOs</b>
+		</field>
+	</mapping>
+
+
+	<mapping>
+		<class-a>com.k15t.pat.entity.UserEntity</class-a>
+		<class-b>com.k15t.pat.dto.UserOutDTO</class-b>
+
+		<field>
+			<a>id</a>
+			<b>id</b>
+		</field>
+
+		<field>
+			<a>name</a>
+			<b>name</b>
+		</field>
+
+		<field>
+			<a>email</a>
+			<b>email</b>
+		</field>
+
+		<field>
+			<a>password</a>
+			<b>password</b>
+		</field>
+
+		<field>
+			<a>phone</a>
+			<b>phone</b>
+		</field>
+
+		<field>
+			<a>addressEntities</a>
+			<b>addressOutDTOs</b>
+		</field>
+	</mapping>
+</mappings>

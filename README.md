@@ -43,3 +43,82 @@ When you are done share the result via GitHub.
 Tip: Use git as you would in a product environment - small, meaningful commits with descriptive commit messages. This makes it easy for the reviewer to follow your steps and comprehend what you are doing.
 
 Good luck!
+
+
+
+
+## Documentation
+
+##Documentation
+	Project name : Java Meetup Registration
+------------------------------------------------------------------------------------------------------------------------
+##Steps to run the project:
+	Please refer run-readme.md file.
+------------------------------------------------------------------------------------------------------------------------
+##Project Modules :
+	This project consists of back-end as well as frontend services 
+	
+##Project architectural points:
+	Points regarding the development phase:
+
+#### 1. Modularise :
+	For the time being I have modulerise the project on package level.
+	Later we can also modularise in maven modules.
+
+------------------------------------------------------------------------------------------------------------------------
+#### 2. DTO :
+	It stands for Data Transfer Object.
+	In this project DTO are used to send as response object from rest controller.
+
+------------------------------------------------------------------------------------------------------------------------
+#### 3. RESTful API design :	
+	Backend consists following restful apis i.e.
+	a. /api/users - used for all user related services; As registration comes under user ; I have changed the /registration to /user. As per the REST norm we should not use verbs.
+	Please refer to UserResource for more
+
+------------------------------------------------------------------------------------------------------------------------
+#### 4. Exception Handler via Aspect :
+	Added aspect for exception handling at rest layer and send appropriate http status and error messages.
+	1. com.k15t.pat.exception -> consists of all user defined errors like BadRequestException
+	2.com.k15t.pat.exception.RestResponseEntityExceptionHandler -> Takes care of throwing exceptions in user readable format. Handles exceptions like BadRequestException and other runtime exceptions.
+	
+
+------------------------------------------------------------------------------------------------------------------------
+#### 5. Dozer mapper used :
+	Dozer bean mapper is used to map two objects and its fields. Mappings files have been written in resources/dozer folder.
+
+------------------------------------------------------------------------------------------------------------------------
+
+#### 6. Unit tests:
+	Unit test written using testNG and only exception thrown use cases.
+
+------------------------------------------------------------------------------------------------------------------------
+
+#### 7. Comments :
+	Entire code styling is influenced by Clean Code principle - Robert Martin
+	Which says
+	'Truth can only be found in one place: the code’.
+	So you may not found any comments anywhere in the project.
+	Keeping in mind that git can be used to manage version of file and method name should be kept as self explanatory. However, if you need comments on each file. I can do that too.
+
+------------------------------------------------------------------------------------------------------------------------
+#### 8. Design principles used in Project :
+	a. SOLID (single responsibility, open-closed, Liskov subsitution, interface segregation, dependency inversion) principle,
+	b. Composition over inheritance,
+	c. DRY(Don’t repeat yourself),
+	d. Test only exceptions,
+	e. KISS(Keep it simple, stupid)
+
+------------------------------------------------------------------------------------------------------------------------
+#### 9. Frontend :
+	a. registrationController is associated to registration.vm and
+	it uses userService to consume rest.
+
+------------------------------------------------------------------------------------------------------------------------
+
+#### 10. Area of improvements :
+	a. Test cases:
+	I have written only exception thrown test case we can also write the positive test cases in future.
+	b. while coding I have not used git as we use in professional environment
+	c. bower is not used for frontend
+	d. no frontend tests written

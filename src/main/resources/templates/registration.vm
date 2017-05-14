@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title>PAT Registration</title>
+        
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.1/angular-resource.min.js"></script>
+        
+        <script src="public/js/app.js"></script>   
+        <script src="public/js/controllers/registrationController.js"></script>        
+        <script src="public/js/services/userService.js"></script>        
+             
+        <link rel="stylesheet" type="text/css" href="public/css/app.css">
+    </head>
+    <body ng-app="meetupApp" ng-controller="registrationController">
+        #parse ("common/header.vm")
+        <div class="bannerText">
+        	<div class="col-md-3"></div>
+        	<div class="col-md-6">
+            <h1 class="pull-left">
+                Java Meetup Registration
+            </h1>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+	        <form name="registrationForm" ng-submit="register(registrationForm.$valid)" novalidate>
+		        <div class="row">
+		        	<div class="col-md-12">
+				        <div class="form-group" ng-class="{ 'has-error' : registrationForm.name.$invalid && !registrationForm.name.$pristine }">
+				    		<label for="name">Name:</label>
+				    		<input type="text" class="form-control" name="name" ng-model="name" required="true">
+	  						<p ng-show="registrationForm.name.$invalid && !registrationForm.name.$pristine">Name is required.</p>
+				  		</div>
+			  		</div>
+		  		</div>
+		  		<div class="row">
+		  			<div class="col-md-12">
+				        <div class="form-group" ng-class="{ 'has-error' : registrationForm.email.$invalid && !registrationForm.email.$pristine }">
+				    		<label for="email">Email address:</label>
+				    		<input type="email" class="form-control" name="email" ng-model="email" required>
+	  						<p ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine">Email is required.</p>
+				  		</div>
+			  		</div>
+		  		</div>
+		  		<div class="row">
+		  			<div class="col-md-12">
+						<div class="form-group" ng-class="{ 'has-error' : registrationForm.password.$invalid && !registrationForm.password.$pristine }">
+						    <label for="password">Password:</label>
+						    <input type="password" class="form-control" name="password" ng-model="password" ng-required="true" ng-minlength="4" ng-maxlength="10">
+						    <p ng-show="registrationForm.password.$error.minlength">Password is too short.</p>
+		            		<p ng-show="registrationForm.password.$error.maxlength">Password is too long.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group" ng-class="{ 'has-error' : registrationForm.street.$invalid && !registrationForm.street.$pristine }">
+						    <label for="street">Street:</label>
+						    <input type="text" class="form-control" name="street" ng-model="street" required>
+		  					<p ng-show="registrationForm.street.$invalid && !registrationForm.street.$pristine">Street is required.</p>				    
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="form-group" ng-class="{ 'has-error' : registrationForm.city.$invalid && !registrationForm.city.$pristine }">
+						    <label for="city">City:</label>
+						    <input type="text" class="form-control" name="city" ng-model="city" required>
+		  					<p ng-show="registrationForm.city.$invalid && !registrationForm.city.$pristine">City is required.</p>				    
+						</div>
+					</div>					
+					
+					<div class="col-md-3">
+						<div class="form-group" ng-class="{ 'has-error' : registrationForm.country.$invalid && !registrationForm.country.$pristine }">
+						    <label for="country">Country:</label>
+						    <input type="text" class="form-control" name="country" ng-model="country" required>
+		  					<p ng-show="registrationForm.country.$invalid && !registrationForm.country.$pristine">Country is required.</p>				    
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group" ng-class="{ 'has-error' : registrationForm.name.$invalid && !registrationForm.name.$pristine }">
+						    <label for="phone">Phone number:</label>
+						    <input type="text" class="form-control" name="phone" ng-model="phone">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12">
+				        <div class="pull-right">
+					        <button class="btn btn-info" type="submit" ng-disabled="registrationForm.$invalid"
+					            >
+					            <i class="glyphicon glyphicon-floppy-disk"></i> Register
+					        </button>
+					        <button class="btn btn-default" type="button" ng-click="cancel()">
+					            <i class="glyphicon glyphicon-remove"></i> Cancel
+					        </button>
+				    	</div>
+			    	</div>
+		    	</div>
+		    	
+	    		</br>
+	
+	    		<div class="row">
+	    			<div class="col-md-12">
+		    			<div class="alert alert-info text-center" role="alert" ng-if="success">
+	                              <p>Registration Successful!</p>
+	                    </div>
+	                    
+		    			<div class="alert alert-danger text-center" role="alert" ng-if="error">
+	                              <p>{{errorMessage}}</p>
+	                    </div>
+                    </div>
+	    		</div>
+	        </form>
+	        
+	        
+        </div>
+        <div class="col-md-3"></div>
+        </div>
+        #parse ("common/footer.vm")
+    </body>
+</html>

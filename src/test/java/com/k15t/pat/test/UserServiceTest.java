@@ -1,6 +1,5 @@
 package com.k15t.pat.test;
 
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
@@ -49,7 +48,7 @@ public class UserServiceTest
             assertEquals(exception.getErrorMessage().getCode(), ErrorCodes.EMAIL_ALREADY_REGISTERED.getCode());
         }
     }
-    
+
     @Test(dataProvider = "getDataForSaveUserWherePasswordIsLong", dataProviderClass = UserServiceDataProvider.class)
     public void shouldThrowBadRequestExceptionForLongPasswordSaveUser(UserInDTO userInDTO)
     {
@@ -63,7 +62,7 @@ public class UserServiceTest
             assertEquals(exception.getErrorMessage().getCode(), ErrorCodes.PASSWORD_TOO_LONG.getCode());
         }
     }
-    
+
     @Test(dataProvider = "getDataForSaveUserWherePasswordIsShort", dataProviderClass = UserServiceDataProvider.class)
     public void shouldThrowBadRequestExceptionForShortPasswordSaveUser(UserInDTO userInDTO)
     {

@@ -5,7 +5,6 @@ angular.module('meetupApp')
 		$scope.success = false;
 		$scope.error = false;
 
-		
         if(isValid) {
         	var addressInDTOs = [{
         		street: $scope.street,
@@ -24,6 +23,15 @@ angular.module('meetupApp')
 	        RegistrationService.save(userInDTO)
 	        .$promise.then(function (data) {
             	$scope.success = true;
+            	//clearForm();
+        		$scope.name= '';
+        		$scope.email = '';
+        		$scope.password = '';
+        		$scope.street = '';
+        		$scope.city = '';
+        		$scope.country='';
+        		$scope.phone='';
+            	
             })
             .catch(function(data) {
             	$scope.error = true;
@@ -35,4 +43,5 @@ angular.module('meetupApp')
     $scope.cancel = function () {
     	$window.location.reload();
     };
+
 }]);
